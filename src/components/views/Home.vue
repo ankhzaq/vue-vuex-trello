@@ -24,15 +24,21 @@
 import BoardCard from '@/components/BoardCard';
 
 export default {
-  component: { BoardCard },
-  data: function () {
+  components: { BoardCard },
+  data () {
     return {
       boardName: '',
       boards: [
         { id: 1, name: 'Tareas' },
         { id: 2, name: 'Lista de la Compra' },
       ]
-    };
+    }
+  },
+  methods: {
+    add () {
+      console.log("add method");
+      this.boards.push({ id: this.boards.length + 1, name: this.boardName });
+    }
   },
   name: 'home-view'
 }
