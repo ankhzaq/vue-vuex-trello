@@ -18,8 +18,8 @@ export default {
   data () {
     return {
       tasksList: [
-        { id: 1, title: 'Aprender Vue', completed: false },
-        { id: 2, title: 'Aprender Vuex', completed: false },
+        { id: '1', title: 'Aprender Vue', completed: false },
+        { id: '2', title: 'Aprender Vuex', completed: false },
       ]
     }
   },

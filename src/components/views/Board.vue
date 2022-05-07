@@ -31,14 +31,14 @@ export default {
     return {
       listName: '',
       boardList: [
-        { id: 1, name: 'Todo'},
-        { id: 2, name: 'Doing'},
+        { id: '1', name: 'Todo'},
+        { id: '2', name: 'Doing'},
       ]
     }
   },
   methods: {
     add () {
-      this.boardList.push({ id: this.boardList.length, name: this.listName });
+      this.boardList.push({ id: `${this.boardList.length}`, name: this.listName });
     }
   },
   name: 'board-view',
