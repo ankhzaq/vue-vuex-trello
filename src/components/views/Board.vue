@@ -22,28 +22,45 @@
 </template>
 
 <script>
-
+import { mapState, mapActions, mapGetters } from 'vuex';
 import Column from '@/components/Column';
 
 export default {
   components: { Column },
   data () {
     return {
-      listName: '',
-      boardList: [
-        { id: '1', name: 'Todo'},
-        { id: '2', name: 'Doing'},
-      ]
+      listName: ''
+    }
+  },
+  computed: {
+    ...mapState([
+      'fetchingData',
+      'error'
+    ]),
+    ...mapGetters([
+      'getListsByBoard'
+    ]),
+    boardList () {
+      return this.getListsByBoard(this.id)
     }
   },
   methods: {
+    ...mapActions([
+      'addColumn',
+      'fetchLists'
+    ]),
     add () {
-      this.boardList.push({ id: `${this.boardList.length}`, name: this.listName });
+      this.addColumn({ board: this.id, name: this.listName });
+      this.listName = '';
+      // this.boardList.push({ id: `${this.boardList.length}`, name: this.listName });
     }
+  },
+  created () {
+    this.fetchLists({ board: this.id })
   },
   name: 'board-view',
   props: {
-    id: Number,
+    id: String,
     name: String
   }
 }
@@ -56,7 +73,7 @@ export default {
 
   h3 {
     color: #37474f;
-    texxt-align: left;
+    text-align: left;
     margin: 1.5rem;
 
     span {

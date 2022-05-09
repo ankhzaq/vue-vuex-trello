@@ -29,10 +29,6 @@ export default {
   data () {
     return {
       boardName: ''
-      /*boards: [
-        { id: 1, name: 'Tareas' },
-        { id: 2, name: 'Lista de la Compra' },
-      ]*/
     }
   },
   computed: {
@@ -47,8 +43,8 @@ export default {
       'addBoard'
     ]),
     add () {
-      console.log("add method");
       this.addBoard({ name: this.boardName });
+      this.boardName = '';
       // this.boards.push({ id: this.boards.length + 1, name: this.boardName });
     }
   },

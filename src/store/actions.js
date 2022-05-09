@@ -13,7 +13,7 @@ export default {
   fetchLists ({ commit }, { board }) {
     commit(types.FETCH_LISTS_REQUEST);
 
-    API.getBoardsByUser(board)
+    API.getListsFromBoard(board)
       .then(snap => commit(types.FETCH_LISTS_SUCCESS, { lists: snap.val() }))
       .catch(error => commit(types.FETCH_LISTS_FAILURE, { error }));
   },

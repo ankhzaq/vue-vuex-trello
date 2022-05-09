@@ -25,7 +25,7 @@ export default {
 
   [types.FETCH_LISTS_SUCCESS] (state, { lists }) {
     state.fetchingData = false;
-    state.boards = { ...lists };
+    state.lists = { ...lists };
   },
 
   [types.FETCH_LISTS_FAILURE] (state, { error }) {
@@ -41,7 +41,7 @@ export default {
 
   [types.FETCH_TASKS_SUCCESS] (state, { tasks }) {
     state.fetchingData = false;
-    state.boards = { ...tasks };
+    state.tasks = { ...tasks };
   },
 
   [types.FETCH_TASKS_FAILURE] (state, { error }) {

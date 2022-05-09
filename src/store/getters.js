@@ -1,6 +1,6 @@
 export default {
   getListsByBoard: (state) => (boardId) => {
-    return Object.values(state.list)
+    return Object.values(state.lists)
       .filter(list => list.board === boardId)
   },
   getTasksFromList: (state) => (listId) => {
