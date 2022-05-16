@@ -11,17 +11,29 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapState } from 'vuex';
 import TaskList from '@/components/TaskList';
 
 export default {
   components: { TaskList },
-  data () {
-    return {
-      tasksList: [
-        { id: '1', title: 'Aprender Vue', completed: false },
-        { id: '2', title: 'Aprender Vuex', completed: false },
-      ]
+  computed: {
+    ...mapState([
+        'fetchingData'
+    ]),
+    ...mapGetters([
+        'getTasksFromList'
+    ]),
+    tasksList () {
+      return this.getTasksFromList(this.listId)
     }
+  },
+  methods: {
+    ...mapActions([
+        'fetchTasks'
+    ])
+  },
+  created () {
+    this.fetchTasks({ listId: this.listId })
   },
   name: 'column-component',
   props: {

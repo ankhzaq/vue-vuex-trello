@@ -18,12 +18,11 @@ export default {
       .catch(error => commit(types.FETCH_LISTS_FAILURE, { error }));
   },
 
-  fetchTasks ({ commit }, { list }) {
-    commit(types.FETCH_BOARDS_REQUEST);
-
-    API.getBoardsByUser(list)
-      .then(snap => commit(types.FETCH_BOARDS_SUCCESS, { tasks: snap.val() }))
-      .catch(error => commit(types.FETCH_BOARDS_FAILURE, { error }));
+  fetchTasks ({ commit }, { listId }) {
+    commit(types.FETCH_TASKS_REQUEST);
+    API.getTasksFromList(listId)
+      .then(snap => commit(types.FETCH_TASKS_SUCCESS, { tasks: snap.val() }))
+      .catch(error => commit(types.FETCH_TASKS_FAILURE, { error }));
   },
 
   // Añadir un nuevo panel
@@ -48,7 +47,7 @@ export default {
   },
 
   markAsCompleted ({ commit }, { task }) {
-    API.deleteTask(task.id)
+    API.completedTask(task.id)
       .then(() => commit(types.MARK_AS_COMPLETED, { task }))
   }
 }

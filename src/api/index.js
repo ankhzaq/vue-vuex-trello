@@ -29,7 +29,7 @@ export default {
     const query = tasksRef.orderByChild('list').equalTo(listId);
     return query.once('value');
   },
-  postTask (list, title) {
+  postTasks (list, title) {
     const id = tasksRef.push().key;
     const task = { id, list, title, completed: false };
 

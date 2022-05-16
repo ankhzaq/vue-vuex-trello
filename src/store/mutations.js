@@ -40,11 +40,15 @@ export default {
   },
 
   [types.FETCH_TASKS_SUCCESS] (state, { tasks }) {
+    // eslint-disable-next-line no-debugger
+    debugger;
     state.fetchingData = false;
-    state.tasks = { ...tasks };
+    state.tasks = Object.assign({}, state.tasks, tasks);
   },
 
   [types.FETCH_TASKS_FAILURE] (state, { error }) {
+    // eslint-disable-next-line no-debugger
+    debugger;
     state.fetchingData = false;
     state.error = error;
   },
@@ -71,6 +75,6 @@ export default {
 
   // Crear un nuevo panel
   [types.MARK_AS_COMPLETED] (state, { task }) {
-    task.completed = !task.complete;
+    task.completed = !task.completed;
   }
 }

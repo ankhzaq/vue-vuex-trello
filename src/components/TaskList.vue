@@ -4,6 +4,7 @@
       v-for="(task, index) in tasks"
       :key="index"
       :class="{ completed: task.completed }"
+      @click="markAsCompleted({ task })"
     >
       {{ task.title }}
     </li>
@@ -17,6 +18,9 @@
 </template>
 <script>
 
+
+import { mapActions } from 'vuex';
+
 export default {
   name: 'taskList',
   props: {
@@ -29,8 +33,13 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+        'addTask',
+        'markAsCompleted'
+    ]),
     add() {
-      // TODO: implementar evento
+      this.addTask({ list: this.listId, title: this.title });
+      this.title = '';
     }
   }
 }

@@ -10,23 +10,23 @@
       @keyup.enter="add()"
     />
     <div class="container">
-      <column
+      <column-component
         v-for="(list, index) in boardList"
         :key="index"
         :listId="list.id"
         :name="list.name">
 
-      </column>
+      </column-component>
     </div>
   </section>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
-import Column from '@/components/Column';
+import ColumnComponent from '@/components/Column';
 
 export default {
-  components: { Column },
+  components: { ColumnComponent },
   data () {
     return {
       listName: ''
@@ -52,7 +52,6 @@ export default {
     add () {
       this.addColumn({ board: this.id, name: this.listName });
       this.listName = '';
-      // this.boardList.push({ id: `${this.boardList.length}`, name: this.listName });
     }
   },
   created () {
