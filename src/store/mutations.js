@@ -40,15 +40,11 @@ export default {
   },
 
   [types.FETCH_TASKS_SUCCESS] (state, { tasks }) {
-    // eslint-disable-next-line no-debugger
-    debugger;
     state.fetchingData = false;
     state.tasks = Object.assign({}, state.tasks, tasks);
   },
 
   [types.FETCH_TASKS_FAILURE] (state, { error }) {
-    // eslint-disable-next-line no-debugger
-    debugger;
     state.fetchingData = false;
     state.error = error;
   },

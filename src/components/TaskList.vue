@@ -2,9 +2,10 @@
   <ul>
     <li
       v-for="(task, index) in tasks"
-      :key="index"
       :class="{ completed: task.completed }"
+      :key="index"
       @click="markAsCompleted({ task })"
+      @dblclick="deleteTask({ taskId: task.id })"
     >
       {{ task.title }}
     </li>
@@ -35,6 +36,7 @@ export default {
   methods: {
     ...mapActions([
         'addTask',
+        'deleteTask',
         'markAsCompleted'
     ]),
     add() {

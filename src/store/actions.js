@@ -43,7 +43,7 @@ export default {
 
   deleteTask ({ commit }, { taskId }) {
     API.deleteTask(taskId)
-      .then(() => commit(types.ADD_TASK, { taskId }))
+      .then(() => commit(types.DELETE_TASK, { taskId }))
   },
 
   markAsCompleted ({ commit }, { task }) {
